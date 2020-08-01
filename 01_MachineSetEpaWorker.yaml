@@ -1,0 +1,40 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: as4xy-hgtbx
+    machine.openshift.io/cluster-api-machine-role: epa
+    machine.openshift.io/cluster-api-machine-type: epa
+  name: as4xy-hgtbx-epa-0
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: as4xy-hgtbx
+      machine.openshift.io/cluster-api-machineset: as4xy-hgtbx-epa-0
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: as4xy-hgtbx
+        machine.openshift.io/cluster-api-machine-role: epa
+        machine.openshift.io/cluster-api-machine-type: epa
+        machine.openshift.io/cluster-api-machineset: as4xy-hgtbx-epa-0
+    spec:
+      metadata:
+        creationTimestamp: null
+      providerSpec:
+        value:
+          apiVersion: ovirtproviderconfig.openshift.io/v1beta1
+          cluster_id: 3daac301-ce60-4a7d-ae75-19c1bc62a428
+          credentialsSecret:
+            name: ovirt-credentials
+          id: ""
+          kind: OvirtMachineProviderSpec
+          metadata:
+            creationTimestamp: null
+          name: ""
+          template_name: rhcos4481template
+          userDataSecret:
+            name: worker-user-data
